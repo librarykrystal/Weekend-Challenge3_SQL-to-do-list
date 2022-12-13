@@ -10,12 +10,17 @@ function onReady(){
 }
 
 // console.log('Checkmarks: ✓✔︎✅☑︎');
-let newTask;
+let taskIn;
 
 function submitNewTask(){
-    console.log('f submitNewTask TEST');
-    newTask = $('#taskInput').val();
-    console.log('New Task:', newTask);
+    // console.log('f submitNewTask TEST');
+    taskIn = {
+        title: $('#taskTitleIn').val(),
+        details: $('#taskDetailsIn').val(),
+        completed: 'n'
+    };
+    // Should COMPLETED be boolean?  Letters?  What?
+    console.log('New Task:', taskIn);
     postTask();
 }
 
