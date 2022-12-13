@@ -1,4 +1,4 @@
-CREATE TABLE tasks_table (
+CREATE TABLE tasks (
     "id" serial PRIMARY KEY,
     "title" varchar(24) NOT NULL,
     "details" varchar(128),

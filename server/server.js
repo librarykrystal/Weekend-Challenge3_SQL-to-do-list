@@ -10,6 +10,7 @@
 //console.log('server.js TEST');
 
 const express = require('express');
+const router = require('./routes/tasks_router')
 
 // If using any modules:    let variableName = require('./modules/moduleName');
 
@@ -18,10 +19,8 @@ const port = 5001;
 
 app.use(express.static('server/public'));
 app.use(express.urlencoded());
-
-// If using routers, add them here
-let tasksRouter = require('./routes/tasks_router');
-app.use('/songs', tasksRouter);
+// router
+app.use('/tasks', router);
 
 app.listen(port, () => {
     console.log('listening on port', port);

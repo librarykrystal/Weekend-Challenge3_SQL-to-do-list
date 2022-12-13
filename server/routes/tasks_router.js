@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     const newTask = req.body;
     const queryText = `
     INSERT INTO "tasks" ("title", "details", "completed")
-    VALUES (${newTask.title}, '${newTitle.details}', '${newTitle.completed}');
+    VALUES (${newTask.title}, '${newTask.details}', '${newTask.completed}');
     `;
     pool.query(queryText)
     .then((result) => {
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * from task_table;';
+    let queryText = 'SELECT * from tasks;';
     pool.query(queryText)
     .then((result) => {
         console.log('Results from DB:', result);
