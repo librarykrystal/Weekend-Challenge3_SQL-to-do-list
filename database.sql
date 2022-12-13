@@ -4,3 +4,4 @@ CREATE TABLE tasks_table (
     "details" varchar(128),
     "completed" boolean NOT NULL
 );
+

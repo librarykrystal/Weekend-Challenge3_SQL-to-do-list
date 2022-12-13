@@ -4,11 +4,11 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const pool = new Pool({
-    database: 'weekend-to-do-app',  // make sure this is db name, not table name
+    database: 'weekend-to-do-app',
     host: 'localhost',
-    port: 5432,  // host and port info seen in Postico
-    max: 10,  // max number of queries/connections to db that can be made at once
-    idleTimeoutMillis: 30000  // 30000 millis is 30 seconds
+    port: 5432,
+    max: 10,
+    idleTimeoutMillis: 30000
 });
 
 pool.on('connect', () => {

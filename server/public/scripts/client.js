@@ -19,21 +19,41 @@ function submitNewTask(){
         details: $('#taskDetailsIn').val(),
         completed: 'n'
     };
-    // Should COMPLETED be boolean?  Letters?  What?
     console.log('New Task:', taskIn);
-    postTask();
+    postTask(taskIn);
 }
 
-function postTask(){
-    console.log('f postTask TEST');
+function postTask(taskIn){
+    // console.log('f postTask TEST');
+    $.ajax({
+        method: "POST",
+        url: "/tasks",
+        data: taskIn
+    }).then (function(response){
+        console.log("f postTask response:", response);
+    }).catch (function(error){
+        console.log(error);
+        alert("data not sent");
+    });
     getTasks();
 }
 
+
 function getTasks(){
     console.log('f getTasks TEST');
-    appendTasks();
+    $.ajax({
+        method: "GET",
+        url: "/tasks",
+    }).then(function (response){
+        console.log("f getTasks resonse:", response);
+    }).catch(function(error){
+        alert(error);
+    });
+    appendTasks(response);
 }
 
-function appendTasks(){
+function appendTasks(allTasks){
     console.log('f appendTasks TEST');
+    console.log('f appendTasks content:', allTasks);
+    // write append loop
 }
