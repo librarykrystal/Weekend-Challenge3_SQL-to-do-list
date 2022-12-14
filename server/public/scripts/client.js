@@ -59,10 +59,23 @@ function getTasks(){
 function appendTasks(allTasks){
     console.log('f appendTasks TEST');
     console.log('f appendTasks content:', allTasks);
-    // $('#  ').empty();
+    $('#taskList').empty();
     // write append loop
-    // append must include new COMPLETE and DELETE buttons with IDs
-    // figure out what to append into that will be targeted in onReady handlers
+    for(let item of allTasks){
+        $('#taskList').append(`
+            <br>
+            <div class="taskDiv">
+            <span class="title">${item.title}</span> - <span class="details">${item.details}</span>
+            <br>
+            <div class="buttonsDiv">
+            <button class="completeBtn">Mark Completed</button>
+            <button class="deleteBtn">Delete</button>
+            </div>
+            </div>
+        `)
+    }
+    // append must include new COMPLETE and DELETE buttons with IDs (within a new div? or just change text colo)
+    // figure out what to append into that will be targeted in onReady handlers (HTML section with class?)
 }
 
 function completeIt(){

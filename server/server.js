@@ -5,21 +5,24 @@
 // npm install pg
 // stole koala favicon
 
-// Anything else needed?
+
+// @ END OF MONDAY:
+// Database POST/GET all working
+// NEXT STEPS:
+// write append, incl COMPLETED/DELETE buttons, make those work, use CSS to change 'completed' look
+// will need to read/edit COMPLETED boolean values in DB
+
 
 //console.log('server.js TEST');
 
 const express = require('express');
 const router = require('./routes/tasks_router')
-
 // If using any modules:    let variableName = require('./modules/moduleName');
-
 const app = express();
 const port = 5001;
 
 app.use(express.static('server/public'));
 app.use(express.urlencoded());
-// router
 app.use('/tasks', router);
 
 app.listen(port, () => {

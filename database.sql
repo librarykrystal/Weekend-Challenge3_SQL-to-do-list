@@ -4,4 +4,3 @@ CREATE TABLE tasks (
     "details" varchar(128),
     "completed" boolean NOT NULL
 );
-

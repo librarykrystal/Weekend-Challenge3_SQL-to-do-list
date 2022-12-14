@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     const newTask = req.body;
     const queryText = `
     INSERT INTO "tasks" ("title", "details", "completed")
-    VALUES (${newTask.title}, '${newTask.details}', '${newTask.completed}');
+    VALUES ('${newTask.title}', '${newTask.details}', '${newTask.completed}');
     `;
     pool.query(queryText)
     .then((result) => {
