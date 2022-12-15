@@ -22,6 +22,7 @@ const pool = require('../modules/pool');
 
 
 router.post('/', (req, res) => {
+    console.log('ROUTER.POST');
     const newTask = req.body;
     const queryText = `
     INSERT INTO "tasks" ("title", "details", "completed")
@@ -39,6 +40,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
+    console.log('ROUTER.GET');
     let queryText = 'SELECT * from tasks;';
     pool.query(queryText)
     .then((result) => {
@@ -50,6 +52,43 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+// BELOW IS FOR USING ID
+// NOT WORKING
+// GET gets 404 NOT FOUND in POSTMAN
+// DELETE BTN gives 404 NOT FOUND ERROR in CONSOLE
+// DELETE logs tdo not show up in TERMINAL
+
+router.get('/:id', (req, res) => {
+    console.log('ROUTER.GET W/ID');
+    console.log('r.get BY ID:', req.params.id);   // whatever was passed in
+    const queryText = `SELECT * FROM tasks WHERE id = ${req.params.id};`;
+    pool.query(queryText)
+    .then((result) => {
+        console.log('r.get BY ID - RESULT:', result);
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log('Error making a DB query:', error);
+        res.sendStatus(500);
+    })
+});
+
+
+router.delete('/:id', (req, res) => {
+    console.log('ROUTER.DELETE');
+    console.log('r.delete ID:', req.params.id);   // whatever was passed in
+    const queryText = `DELETE FROM tasks WHERE id = ${req.params.id};`;
+    pool.query(queryText)
+    .then((result) => {
+        console.log('r.delete RESULT:', result);
+        res.sendStatus(204);
+    })
+    .catch((error) => {
+        console.log('Error making a deletion:', error);
+        res.sendStatus(500);
+    })
+});
 
 
 module.exports = router;

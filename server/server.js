@@ -23,7 +23,7 @@ const port = 5001;
 
 app.use(express.static('server/public'));
 app.use(express.urlencoded());
-app.use('/tasks', router);
+app.use('/tasks_router', router);
 
 app.listen(port, () => {
     console.log('listening on port', port);
