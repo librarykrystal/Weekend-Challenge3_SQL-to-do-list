@@ -5,10 +5,8 @@ $(document).ready(onReady);
 function onReady(){
     console.log('f onReady TEST');
     $('#submitBtn').on('click', submitNewTask);
-    // descentant selector for future buttons?  Each task should have COMPLETE and DELETE btn.
-    // figure out what to target... (a div class the tasks will append in?)
+    $('#taskList').on('click', '.delete', deleteIt);
     // $('#').on("click", '.complete', completeIt);
-    // $('#').on("click", '.delete', deleteIt);
     getTasks();
 }
 
@@ -34,11 +32,12 @@ function postTask(taskIn){
         data: taskIn
     }).then (function(response){
         console.log("f postTask response:", response);
+        getTasks();
     }).catch (function(error){
         console.log(error);
         alert("data not sent");
     });
-    getTasks();
+
 }
 
 function getTasks(){
@@ -68,8 +67,8 @@ function appendTasks(allTasks){
             <span class="title">${item.title}</span> - <span class="details">${item.details}</span>
             <br>
             <div class="buttonsDiv">
-            <button class="completeBtn">Mark Completed</button>
-            <button class="deleteBtn">Delete</button>
+            <button class="complete">Mark Completed</button>
+            <button class="delete">Delete</button>
             </div>
             </div>
         `)
@@ -87,5 +86,14 @@ function completeIt(){
 
 function deleteIt(){
     console.log('f deleteIt TEST');
-    // delete that fucker
+    // below is COPIED FROM CLASS NOTES:
+    const id = $(this).parent().parent().data('id');
+    $.ajax({
+        type: 'DELETE',
+        url: `/musicLibrary/${id}`
+    }).then(function() {
+        getSongs();
+    }).catch(function(error) {
+        console.log('Delete ERROR:', error);
+    })
 }

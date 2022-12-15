@@ -9,8 +9,8 @@
 // @ END OF MONDAY:
 // Database POST/GET all working
 // NEXT STEPS:
-// write append, incl COMPLETED/DELETE buttons, make those work, use CSS to change 'completed' look
-// will need to read/edit COMPLETED boolean values in DB
+// Make complete/delete btns work, use CSS to change 'completed' look
+// will need to read/edit COMPLETED boolean values in DB using PUT
 
 
 //console.log('server.js TEST');
