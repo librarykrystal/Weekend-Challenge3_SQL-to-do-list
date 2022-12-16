@@ -21,6 +21,8 @@ function submitNewTask(){
     };
     console.log('New Task:', taskIn);
     postTask(taskIn);
+    $('#taskTitleIn').val('');
+    $('#taskDetailsIn').val('');
 }
 
 function postTask(taskIn){

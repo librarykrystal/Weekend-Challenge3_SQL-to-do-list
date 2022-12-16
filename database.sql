@@ -4,3 +4,6 @@ CREATE TABLE tasks (
     "details" varchar(128),
     "completed" boolean NOT NULL
 );
+
+INSERT INTO "tasks" (title, details, completed)
+VALUES ('Party', 'like it''s 1999', false);
