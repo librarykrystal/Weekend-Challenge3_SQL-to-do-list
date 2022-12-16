@@ -58,6 +58,18 @@ function appendTasks(allTasks){
     console.log('f appendTasks content:', allTasks);
     $('#taskList').empty();
     for (let i = 0; i < allTasks.length; i++) {
+        if(allTasks[i].completed == true){
+            $('#taskList').append(`
+            <br>
+            <div class="taskDiv">
+            ✔︎ <span class="titleCompleted">${allTasks[i].title}</span>
+            <br>
+            <div class="buttonsDiv" data-id=${allTasks[i].id}>
+            <button class="delete">Delete</button>
+            </div>
+            </div>
+        `)
+        } else {
         $('#taskList').append(`
             <br>
             <div class="taskDiv">
@@ -69,17 +81,25 @@ function appendTasks(allTasks){
             <button class="delete">Delete</button>
             </div>
             </div>
-        `)
+        `)}
     }
 }
+
+// COMPLETE BUTTON PLAN:
+// WRITE router.put, WRITE completeIt client function, EDIT append
+// Append loop should check for (IF) completion status
+// Use PUT update by "this id" with DATA that updates boolean value of completed to TRUE (y)
+// If FALSE, append stays as-is
+// IF TRUE:
+// add a class that different CSS will apply to (greyed out title, no details, checkmark!)
+// and include ONLY the delete button
 
 function completeIt(){
     console.log('f completeIt TEST');
     const id = $(this).parent().data('id');
     console.log('completeIt THIS ID:', id);
-    // make visual representation on DOM change to reflect completion (CSS color or similar)
-    // must also POST to database new value y for completed in table
-    // then must trigger a new GET, which triggers a new APPEND
+
+    // remember to trigger a new GET, which triggers a new APPEND
 }
 
 function deleteIt(){
@@ -95,3 +115,26 @@ function deleteIt(){
         console.log('Delete ERROR:', error);
     })
 }
+
+
+// ORIGINAL WORKING APPEND
+
+// function appendTasks(allTasks){
+//     // console.log('f appendTasks TEST');
+//     console.log('f appendTasks content:', allTasks);
+//     $('#taskList').empty();
+//     for (let i = 0; i < allTasks.length; i++) {
+//         $('#taskList').append(`
+//             <br>
+//             <div class="taskDiv">
+//             <span class="title">${allTasks[i].title}</span> - 
+//             <span class="details">${allTasks[i].details}</span>
+//             <br>
+//             <div class="buttonsDiv" data-id=${allTasks[i].id}>
+//             <button class="complete">Mark Completed</button>
+//             <button class="delete">Delete</button>
+//             </div>
+//             </div>
+//         `)
+//     }
+// }

@@ -5,14 +5,6 @@
 // npm install pg
 // stole koala favicon
 
-
-// @ END OF MONDAY:
-// Database POST/GET all working
-// NEXT STEPS:
-// Make complete/delete btns work, use CSS to change 'completed' look
-// will need to read/edit COMPLETED boolean values in DB using PUT
-
-
 //console.log('server.js TEST');
 
 const express = require('express');
