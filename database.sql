@@ -6,4 +6,7 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO "tasks" (title, details, completed)
-VALUES ('Party', 'like it''s 1999', false);
+VALUES ('Go Bowling', 'not on Shabbos', false),
+('Get a Toe', 'by 3 o''clock, with nail polish', false),
+('Join the Nihilists', 'at least it''s an ethos', false),
+('Laundry', 'doesn''t matter', true);
