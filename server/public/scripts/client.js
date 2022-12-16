@@ -10,7 +10,6 @@ function onReady(){
     getTasks();
 }
 
-// console.log('Checkmarks: ✓✔︎✅☑︎');
 let taskIn;
 
 function submitNewTask(){
@@ -18,7 +17,7 @@ function submitNewTask(){
     taskIn = {
         title: $('#taskTitleIn').val(),
         details: $('#taskDetailsIn').val(),
-        completed: 'n'
+        completed: 'false'
     };
     console.log('New Task:', taskIn);
     postTask(taskIn);
@@ -28,7 +27,7 @@ function postTask(taskIn){
     console.log('f postTask TEST');
     $.ajax({
         method: 'POST',
-        url: '/tasks',
+        url: '/tasks_router',
         data: taskIn
     }).then (function(response){
         console.log("f postTask response:", response);
@@ -52,6 +51,7 @@ function getTasks(){
         console.log('GET Error:', error);
     });
 }
+
 
 function appendTasks(allTasks){
     // console.log('f appendTasks TEST');
@@ -98,8 +98,15 @@ function completeIt(){
     console.log('f completeIt TEST');
     const id = $(this).parent().data('id');
     console.log('completeIt THIS ID:', id);
-
-    // remember to trigger a new GET, which triggers a new APPEND
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks_router/completed/${id}`,
+        data: {completed: 'true'}
+    }).then(function() {
+        getTasks();
+    }).catch(function(error) {
+        console.log('completeIt ajax PUT ERROR:', error);
+    })
 }
 
 function deleteIt(){
@@ -115,26 +122,3 @@ function deleteIt(){
         console.log('Delete ERROR:', error);
     })
 }
-
-
-// ORIGINAL WORKING APPEND
-
-// function appendTasks(allTasks){
-//     // console.log('f appendTasks TEST');
-//     console.log('f appendTasks content:', allTasks);
-//     $('#taskList').empty();
-//     for (let i = 0; i < allTasks.length; i++) {
-//         $('#taskList').append(`
-//             <br>
-//             <div class="taskDiv">
-//             <span class="title">${allTasks[i].title}</span> - 
-//             <span class="details">${allTasks[i].details}</span>
-//             <br>
-//             <div class="buttonsDiv" data-id=${allTasks[i].id}>
-//             <button class="complete">Mark Completed</button>
-//             <button class="delete">Delete</button>
-//             </div>
-//             </div>
-//         `)
-//     }
-// }

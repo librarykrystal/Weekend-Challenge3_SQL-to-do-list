@@ -1,24 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const pg = require('pg');
-// const Pool = pg.Pool;
+// moved POOL to module
 const pool = require('../modules/pool');
-
-// const pool = new Pool({
-//     database: 'weekend-to-do-app',
-//     host: 'localhost',
-//     port: 5432,
-//     max: 10,
-//     idleTimeoutMillis: 30000
-// });
-
-// pool.on('connect', () => {
-//     console.log('Postgres is connected.');
-// });
-
-// pool.on('error', (error) => {
-//     console.log('Postgres Pool connection error:', error);
-// });
 
 
 router.post('/', (req, res) => {
@@ -51,13 +34,8 @@ router.get('/', (req, res) => {
         console.log('Error making a DB query:', error)
         res.sendStatus(500);
     })
-})
+});
 
-// BELOW IS FOR USING ID
-// NOT WORKING
-// GET gets 404 NOT FOUND in POSTMAN
-// DELETE BTN gives 404 NOT FOUND ERROR in CONSOLE
-// DELETE logs tdo not show up in TERMINAL
 
 router.get('/:id', (req, res) => {
     console.log('ROUTER.GET W/ID');
@@ -89,6 +67,22 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+
+router.put('/completed/:id', (req, res) => {
+    console.log('router.put id', req.params.id);
+    console.log('router.put body', req.body.completed);
+    let queryText = `UPDATE tasks SET completed='true' WHERE id=${req.params.id};`;
+    pool.query(queryText)
+    .then((dbResponse) => {
+        console.log('dbResponse:', dbResponse);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('.put POOL error:', error);
+        res.sendStatus(500);
+    })
+});
+
 
 
 module.exports = router;
