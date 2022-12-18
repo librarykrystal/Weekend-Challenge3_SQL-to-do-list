@@ -3,7 +3,7 @@
 $(document).ready(onReady);
 
 function onReady(){
-    console.log('f onReady TEST');
+    // console.log('f onReady TEST');
     $('#submitBtn').on('click', submitNewTask);
     $('#taskList').on('click', '.delete', deleteIt);
     $('#taskList').on("click", '.complete', completeIt);
@@ -13,7 +13,7 @@ function onReady(){
 let taskIn;
 
 function submitNewTask(){
-    console.log('f submitNewTask TEST');
+    // console.log('f submitNewTask TEST');
     taskIn = {
         title: $('#taskTitleIn').val(),
         details: $('#taskDetailsIn').val(),
@@ -26,7 +26,7 @@ function submitNewTask(){
 }
 
 function postTask(taskIn){
-    console.log('f postTask TEST');
+    // console.log('f postTask TEST');
     $.ajax({
         method: 'POST',
         url: '/tasks_router',
@@ -42,7 +42,7 @@ function postTask(taskIn){
 }
 
 function getTasks(){
-    console.log('f getTasks TEST');
+    // console.log('f getTasks TEST');
     $.ajax({
         method: 'GET',
         url: '/tasks_router',
@@ -57,7 +57,7 @@ function getTasks(){
 
 function appendTasks(allTasks){
     // console.log('f appendTasks TEST');
-    console.log('f appendTasks content:', allTasks);
+    // console.log('f appendTasks content:', allTasks);
     $('#taskList').empty();
     for (let i = 0; i < allTasks.length; i++) {
         if(allTasks[i].completed == true){
@@ -97,7 +97,7 @@ function appendTasks(allTasks){
 // and include ONLY the delete button
 
 function completeIt(){
-    console.log('f completeIt TEST');
+    // console.log('f completeIt TEST');
     const id = $(this).parent().data('id');
     console.log('completeIt THIS ID:', id);
     $.ajax({

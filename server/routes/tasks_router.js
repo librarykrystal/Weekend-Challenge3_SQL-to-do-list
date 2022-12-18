@@ -5,14 +5,12 @@ const pool = require('../modules/pool');
 
 
 router.post('/', (req, res) => {
-    console.log('ROUTER.POST');
+    // console.log('ROUTER.POST');
     const newTask = req.body;
     const queryText = `
     INSERT INTO "tasks" ("title", "details", "completed")
     VALUES ($1, $2, $3);
     `;
-
-    //  ('${newTask.title}', '${newTask.details}', '${newTask.completed}');
     pool.query(queryText, [newTask.title, newTask.details, newTask.completed])
     .then((result) => {
         console.log('result', result);
@@ -25,7 +23,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    console.log('ROUTER.GET');
+    // console.log('ROUTER.GET');
     let queryText = 'SELECT * from tasks ORDER BY "completed" asc;';
     pool.query(queryText)
     .then((result) => {
@@ -40,7 +38,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-    console.log('ROUTER.GET W/ID');
+    // console.log('ROUTER.GET W/ID');
     console.log('r.get BY ID:', req.params.id);   // whatever was passed in
     const queryText = `SELECT * FROM tasks WHERE id = ${req.params.id};`;
     pool.query(queryText)
@@ -56,7 +54,7 @@ router.get('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-    console.log('ROUTER.DELETE');
+    // console.log('ROUTER.DELETE');
     console.log('r.delete ID:', req.params.id);   // whatever was passed in
     const queryText = `DELETE FROM tasks WHERE id = ${req.params.id};`;
     pool.query(queryText)
