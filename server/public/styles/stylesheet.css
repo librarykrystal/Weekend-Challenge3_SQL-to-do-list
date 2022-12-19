@@ -9,28 +9,6 @@ body {
     padding: 15px 10px 20px 10px;
 }
 
-.title {
-    color:royalblue;
-    font-weight: bold;
-    font-size: 1.125em;
-}
-
-.titleCompleted {
-    color: gray;
-}
-
-.delete:hover {
-    color: firebrick;
-    border-color: black;
-    transition: 0.3s;
-}
-
-.complete:hover {
-    color: green;
-    border-color: black;
-    transition: 0.3s;
-}
-
 .addNew {
     border-style: solid;
     border-color: black;
@@ -39,8 +17,62 @@ body {
     background-color: darkgrey;
 }
 
+#submitBtn {
+    margin-top: 6px;
+    background-color: #83aaf1;
+}
+
 #submitBtn:hover {
-    color: royalblue;
+    background-color: #74a0ef;
+    transition: 0.4s;
+}
+
+#submitBtn:hover {
+    border-color: #3c3c3c;
+}
+
+.title {
+    color:#3271e7;
+    font-weight: bold;
+    font-size: 1.125em;
+}
+
+.titleCompleted {
+    color: gray;
+}
+
+.complete {
+    background-color: #83aaf1;
+    /* border: none; */
+}
+.complete:hover {
+    color:#3c3c3c; 
+    background-color: #74a0ef;  
     border-color: black;
     transition: 0.3s;
 }
+
+.delete {
+    background-color: #83aaf1;
+}
+
+.delete:hover {
+    color:#3c3c3c; 
+    background-color: #74a0ef;
+    border-color: black;
+    transition: 0.3s;
+}
+
+.deleteDone {
+    background-color: #b5c6e3;
+    color: #616161;
+}
+
+.deleteDone:hover {
+    /* color:#787878;  */
+    background-color: #a3b8dc;
+    border-color: black;
+    transition: 0.3s;
+}
+
+

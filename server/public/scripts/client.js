@@ -6,6 +6,7 @@ function onReady(){
     // console.log('f onReady TEST');
     $('#submitBtn').on('click', submitNewTask);
     $('#taskList').on('click', '.delete', deleteIt);
+    $('#taskList').on('click', '.deleteDone', deleteIt);
     $('#taskList').on("click", '.complete', completeIt);
     getTasks();
 }
@@ -67,7 +68,7 @@ function appendTasks(allTasks){
             ✔︎ <span class="titleCompleted">${allTasks[i].title}</span>
             <br>
             <div class="buttonsDiv" data-id=${allTasks[i].id}>
-            <button class="delete">Delete</button>
+            <button class="deleteDone">Delete</button>
             </div>
             </div>
         `)
@@ -114,7 +115,7 @@ function completeIt(){
 function deleteIt(){
     // console.log('f deleteIt TEST');
     const id = $(this).parent().data('id');
-    console.log('deleteIt THIS ID:', id);
+    // console.log('deleteIt THIS ID:', id);
     $.ajax({
         type: 'DELETE',
         url: `/tasks_router/${id}`
