@@ -3,8 +3,14 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+#imgHeader {
+    width: 300px;
+    object-fit: contain;
+    padding: 15px 10px 20px 10px;
+}
+
 .title {
-    color:darkorchid;
+    color:royalblue;
     font-weight: bold;
     font-size: 1.125em;
 }
@@ -16,11 +22,25 @@ body {
 .delete:hover {
     color: firebrick;
     border-color: black;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .complete:hover {
     color: green;
     border-color: black;
-    transition: 0.4s;
+    transition: 0.3s;
+}
+
+.addNew {
+    border-style: solid;
+    border-color: black;
+    padding: 10px 10px 10px 10px;
+    width: 400px;
+    background-color: darkgrey;
+}
+
+#submitBtn:hover {
+    color: royalblue;
+    border-color: black;
+    transition: 0.3s;
 }

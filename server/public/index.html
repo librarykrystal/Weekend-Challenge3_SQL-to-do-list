@@ -8,18 +8,20 @@
         <script type="text/javascript" src="./scripts/client.js"></script>
         <link rel="stylesheet" href="./styles/stylesheet.css">
         <title>Wk 10 / WkndCh3: To-Do List</title>
+        <link rel="Shortcut Icon" href="./favicon.ico">
     </head>
     <body>
         <header>
-            <h1>TO-DO LIST</h1>
+            <img src="images/toDoList.png" alt="To-Do List" id="imgHeader"/>
         </header>
-        Add a new task:
+        <div class="addNew">
+        New Task
         <br>
         <input id="taskTitleIn" placeholder="Title"/>
-        <input id="taskDetailsIn" placeholder="Details"/>
+        <input id="taskDetailsIn" size=35 placeholder="Details"/>
         <br>
-        <button id="submitBtn">ADD</button>
-        <br>
+        <button id="submitBtn">Add to List</button>
+        </div>
         <br>
         <div id="taskList">
 
