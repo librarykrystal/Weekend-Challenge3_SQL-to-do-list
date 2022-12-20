@@ -30,7 +30,7 @@ function postTask(taskIn){
     // console.log('f postTask TEST');
     $.ajax({
         method: 'POST',
-        url: '/tasks_router',
+        url: '/tasks',
         data: taskIn
     }).then (function(response){
         console.log("f postTask response:", response);
@@ -46,7 +46,7 @@ function getTasks(){
     // console.log('f getTasks TEST');
     $.ajax({
         method: 'GET',
-        url: '/tasks_router',
+        url: '/tasks',
     }).then(function (response){
         console.log("f getTasks resonse:", response);
         appendTasks(response);
@@ -103,7 +103,7 @@ function completeIt(){
     console.log('completeIt THIS ID:', id);
     $.ajax({
         type: 'PUT',
-        url: `/tasks_router/completed/${id}`,
+        url: `/tasks/completed/${id}`,
         data: {completed: 'true'}
     }).then(function() {
         getTasks();
@@ -118,7 +118,7 @@ function deleteIt(){
     // console.log('deleteIt THIS ID:', id);
     $.ajax({
         type: 'DELETE',
-        url: `/tasks_router/${id}`
+        url: `/tasks/${id}`
     }).then(function() {
         getTasks();
     }).catch(function(error) {
